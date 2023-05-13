@@ -43,4 +43,4 @@ const databaseOptions = {
 }
 ```
 
-Remember to change the databaseOptions properties to your host, database, password, port and firebaseConfig information.
+Remember to change the databaseOptions properties to your host, database, password, port and firebaseConfig information.# Universal-database-connection
