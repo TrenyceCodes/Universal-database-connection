@@ -8,6 +8,8 @@ const createDatabaseConnection = (databaseType, databaseOptions) => {
             return createPostgresConnection(databaseOptions.host, databaseOptions.port, databaseOptions.database);
         case 'firebase':
             return createFirebaseConnection(databaseOptions.firebaseConfig);
+        case 'mysql':
+            return createMySqlConnection(databaseOptions.host, databaseOptions.user, databaseOptions.password, databaseOptions.database);
         default:
             console.log('Database type not supported.');
             break;
@@ -37,5 +39,24 @@ function createFirebaseConnection(firebaseConfig) {
       }
     });
 }  
+
+function createMySqlConnection(host, user, password, database) {
+    return new Promise((resolve, reject) => {
+        const mysqlConnection = mysql.createConnection({
+            host: host,
+            user: user,
+            password: password,
+            database: database
+        })
+        mysqlConnection.connect((error) => {
+            console.log('MySql Database Synced');
+            resolve(mysqlConnection);
+
+            if (error) {
+                return reject(error);
+            }
+        })
+    });
+}
 
 module.exports = createDatabaseConnection;
