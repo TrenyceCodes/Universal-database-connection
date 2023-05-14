@@ -41,6 +41,23 @@ const databaseOptions = {
     measurementId: "measurementId"
   }
 }
+
+createDatabaseConnection("firebase", databaseOptions);
+```
+
+- MySql Connection
+
+```
+const createDatabaseConnection = require("./createDatabaseConnection");
+
+const databaseOptions = {
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "database"
+};
+
+createDatabaseConnection("mysql", databaseOptions);
 ```
 
 Remember to change the databaseOptions properties to your host, database, password, port and firebaseConfig information.# Universal-database-connection
